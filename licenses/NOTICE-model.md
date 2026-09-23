@@ -6,8 +6,9 @@ Google in the TensorFlow Models repository
 
 Copyright 2019 The TensorFlow Authors. Licensed under the Apache License,
 Version 2.0. Modifications by IronEar Technologies LLC: conversion and
-quantization of the network for execution on the ESP32-S3 microcontroller.
-No changes were made to the class set.
+quantization of the network for execution on the ESP32-S3 microcontroller,
+and removal of the log-mel front end from the graph (it runs outside the
+model). No changes were made to the class set.
 
 The class names in `model/yamnet_class_map.csv` come from the AudioSet
 ontology (https://research.google.com/audioset/), Copyright Google LLC,
