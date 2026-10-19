@@ -4,7 +4,7 @@ Firmware 9.0.0. Boards share alerts, positions and heartbeats over LoRa and, on 
 
 ## LoRa, Meshtastic framing
 
-The board is a Meshtastic node on the channel. Any Meshtastic device or app that joins the same channel reads the text messages. The Meshtastic frame is encrypted with the channel key but carries no authentication tag, so the leg has confidentiality and no proof of origin.
+The board is a Meshtastic node on the channel. Any Meshtastic device or app that joins the same channel reads the text messages. The Meshtastic frame is encrypted with the channel key but carries no authentication tag, so the leg has confidentiality and no proof of origin. Fleet lines are accepted from port 256 only, never from chat, and a board drops a fleet line whose sequence number does not advance past the last one it accepted from that sender within an hour.
 
 | Item | US | EU |
 |---|---|---|
