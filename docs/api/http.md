@@ -79,7 +79,7 @@ A label in `triggers` or `password` is a class name from the model's class map, 
 | /api/learn | GET | none | `{active:false}` or `{active:true, remaining_s}`; the first call after the window stores the sound and answers `{ok, name, windows}` or `{ok:false, error}` |
 | /api/presence/learn | POST | `{"name", "seconds"}` | `{ok}`; records a motion pattern |
 | /api/presence/learn | GET | none | `{state, name, seconds_left, error}` with `state` idle, recording, learned or failed |
-| /api/presence/learned | GET | none | `{motion[{name, similarity}]}` |
+| /api/presence/learned | GET | none | `{motion[{name, sim}]}` |
 
 ## Mesh and fleet
 
@@ -90,9 +90,9 @@ A label in `triggers` or `password` is a class name from the model's class map, 
 | /api/mesh | POST | `{"backend":"lora"}`, `{"backend":"meshcore"}`, `{"backend":"off"}` or `{"proto":"meshtastic"}`, `{"proto":"meshcore"}` | `{ok, backend}`; the radio stays off without a private channel |
 | /api/mesh/region | GET | none | `{region, freq_hz, live, proto, phy, backend, switched}` |
 | /api/lora-test | POST | none or `{"text"}` up to 160 characters | `{ok, sent, channel, private}`; sends a text to the channel |
-| /api/fleet | GET | none | `{self{serial, name, role, cfg_hash}, nodes[{serial, id, name, role, batt_v, uptime_min, gps_fix, wifi, ip, cfg_hash, lat, lon, rssi, hb_age_s, link, has_lora, house_rssi, via, seen_s, last_alert{name, kind, conf, snr, db, age_s}, scenes[{name, on, age_s}]}], decision{label, room, serial, conf, snr, db, spl, n, margin_db, ambiguous, candidates[]}}` |
-| /api/fleet/sync | POST | `{"ip", "pass"}` or `{"ip", "token"}` | `{ok, synced, status[2], error}`; pushes this board's pipeline_config and layers into the board at `ip` after signing in to it with its password or a session token of it |
-| /api/fleet/place | POST | `{"lat", "lon"}`, `{"id", "lat", "lon"}` or `{"mode":"auto"}` | `{ok}`; places this board or a fleet board on the map, `auto` returns it to GPS |
+| /api/fleet | GET | none | `{self{serial, name, role, cfg_hash}, nodes[{serial, id, name, role, batt_v, uptime_min, gps_fix, wifi, ip, cfg_hash, lat, lon, rssi, hb_age_s, link, has_lora, house_rssi, house_age_s, house_ch, via, seen_s, last_alert{name, kind, conf, snr, db, age_s}, scenes[{name, on, age_s}]}], decision{label, room, serial, conf, snr, db, spl, n, margin_db, ambiguous, candidates[]}}` |
+| /api/fleet/sync | POST | `{"ip", "pass"}` or `{"ip", "token"}` | `{ok, synced, status[2], error, note}`; pushes this board's pipeline_config and layers into the board at `ip` after signing in to it with its password or a session token of it |
+| /api/fleet/place | POST | `{"lat", "lon"}`, `{"id", "lat", "lon"}`, `{"mode":"auto"}` or `{"id", "mode":"auto"}` | `{ok, id, mode, via}`; places this board or a fleet board on the map, `auto` returns it to GPS; 409 when the other board is not on the house link |
 | /api/house | GET | none | `{enabled, up, channel, associated, linked_peers, tx, rx, drops, auth_fail, replay, relay_lora, relay_mqtt, probes, time{src, node, age_s}, presence, csi{on, frames, drops, source}, index, floor, level, motion, motion_age_s, motion_events, peers[{serial, rssi, age_s, lora, presence, ch}]}` |
 | /api/house | POST | `{"enabled"}` or `{"presence"}` with `off`, `slow` or `fast` | the same object |
 | /api/gps/resurvey | POST | `{"lat", "lon"}` or `{"mode":"auto"}` | `{ok}`; places the board by hand or returns it to GPS |

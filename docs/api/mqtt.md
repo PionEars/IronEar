@@ -20,10 +20,10 @@ Firmware 9.0.0. The board is an MQTT client. It publishes under `<prefix>/<node>
 | ctrl | yes | `{lora, protocol, presence, light}` | after a command and within 5 s of a change made elsewhere |
 | report | no | `{serial, name, id, t, label, kind, conf, snr, db, floor, idx, lat, lon, fix, rssi, motion, peer}` | with every alert, for other software |
 | peer_report | no | the same record for an alert relayed from a board without a broker | per relayed alert |
-| peer/{id} | yes | `{serial, id, batt_mv, uptime_min, rssi, t}` | a LoRa heartbeat from another board, every 60 s |
+| peer/{id} | yes | `{serial, id, batt_mv, uptime_min, rssi, t}` | a heartbeat from another board: every 60 s over LoRa, every 7 s over the house link |
 | fleet_alert | yes | `{label, room, serial, conf, snr, db, spl, n, margin_db, ambiguous, candidates[]}` | master only, when it decides which board heard a sound loudest |
-| fleet_nodes | yes | `{n}` | master only, when the number of boards changes |
-| relay/{serial}/alert, health, position | yes | an alert record, `{t, seen_s, batt_pct, batt_v, gps_fix, uptime_min}`, `{latitude, longitude, gps_accuracy}` | master only, for boards heard over the mesh that have no broker |
+| fleet_nodes | yes | `{n}` | master only, every 60 s |
+| relay/{serial}/alert, health, position, scene/{slug} | yes | `{event_type, name, kind, conf, snr, db, spl, t, node}`, `{t, seen_s, batt_pct, batt_v, gps_fix, uptime_min}`, `{latitude, longitude, gps_accuracy}`, `{on, name}` | master only, for boards heard over the mesh that have no broker; discovery creates a device "<name> (via <master>)" with Last alert, Last alert time, Last heard, GPS fix, Battery, Position, an Alert event and one binary sensor per scene |
 
 ## Entities created by discovery
 
