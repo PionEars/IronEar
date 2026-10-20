@@ -1,6 +1,6 @@
 # IronEar
 
-On-device sound recognition node. ESP32-S3, three PDM microphones, LoRa (Meshtastic compatible), GPS, Home Assistant over MQTT.
+On-device sound recognition node. ESP32-S3, three PDM microphones, LoRa (Meshtastic and Meshcore compatible), GPS, Home Assistant over MQTT.
 
 ## Contents
 
