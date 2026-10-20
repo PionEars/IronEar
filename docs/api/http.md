@@ -68,7 +68,7 @@ A label in `triggers` or `password` is a class name from the model's class map, 
 
 | Route | Method | Body | Answer |
 |---|---|---|---|
-| /api/broadcast/log | GET | none | `{log[{up_s, kind, names, line, lora, ha}], password{on, step, of, left_s}}`; the last 10 broadcasts and the sound password's progress |
+| /api/broadcast/log | GET | none | `{log[{up_s, kind, names, line, lora, ha}], password{on, step, of, left_s}}`; the last 10 broadcasts and the sound phrase's progress |
 | /api/broadcast/test | POST | `{"kind", "name"}` with `kind` trigger, scene, filtered or password | `{ok}`; pushes a synthetic event through the real routing |
 
 ## Teaching
