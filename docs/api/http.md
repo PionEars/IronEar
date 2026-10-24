@@ -34,7 +34,6 @@ Firmware 9.0.0. Every board serves the API on port 80 of its address. Bodies and
 | /api/calibrate-bg | POST | `{"seconds"}` | `{ok, started, seconds}`; records the room's background profile, 409 while one runs |
 | /api/calibrate-bg | GET | none | `{active:false}` or `{active:true, remaining_s}`; the first call after the window stores the profile and answers `{ok, labels, floor_db}` |
 | /api/history | GET | none | `{uptime_s, events[{t_s, db, inf_ms, classes[[name, score]]}]}`; the last classified windows, kept in RAM |
-| /api/alerts/recent | GET | none | `{alerts[{age_s, e{label, conf, kind, mesh, ha}}]}` |
 | /api/infrasound | GET | none | `{db, floor, over, peak, age_ms, valid, band, hist[]}`; 10 to 40 Hz band level from microphone 1 in dBFS, `hist` one value per second for two minutes |
 | /api/infrasound/low | GET | none | the same for 10 to 20 Hz |
 | /api/compass | GET | none | `{heading, mx, my, mz, hi[3], calibrating, remaining_s, radius, samples, rejected}` |
@@ -68,7 +67,7 @@ A label in `triggers` or `password` is a class name from the model's class map, 
 
 | Route | Method | Body | Answer |
 |---|---|---|---|
-| /api/broadcast/log | GET | none | `{log[{up_s, kind, names, line, lora, ha}], password{on, step, of, left_s}}`; the last 10 broadcasts and the sound phrase's progress |
+| /api/broadcast/log | GET | none | `{log[{up_s, age_s, kind, names, conf, line, lora, ha}], password{on, step, of, left_s}}`; the last 64 fires, newest first, with the outcome per route (sent, queued, locked, radio-off, capped, off, peer-sends, FAILED) and the sound phrase's progress. `?n=N` returns the newest N, `?n=0` the progress alone |
 | /api/broadcast/test | POST | `{"kind", "name"}` with `kind` trigger, scene, filtered or password | `{ok}`; pushes a synthetic event through the real routing |
 
 ## Teaching
