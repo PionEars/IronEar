@@ -22,7 +22,6 @@ Firmware 9.0.0. One WebSocket per client at `ws://<board address>/ws?tok=<token>
 | net | 5 s | `{ip}` |
 | mesh | 5 s | `{backend, tx, rx, drops, house{up, peers, tx, rx}, coex{on, req, grant, denied, wifi_tx_in_grant, max_wait_ms}}` |
 | fleet | when the fleet list changes | `{changed, id}` |
-| fleet_alert | master only, when it decides which board heard a sound loudest | `{label, room, serial, conf, snr, db, spl, n, margin_db, ambiguous, candidates[]}` |
 | node | when a board is heard the first time | `{id, serial, fix, lat, lon, rssi}` |
 | remote | when a remote board's name or scenes change | `{id, serial}` |
 | location | when this board's position changes | `{lat, lon, mode, by}` |

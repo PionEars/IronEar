@@ -24,7 +24,7 @@ Text lines:
 
 | Line | Format | Meaning |
 |---|---|---|
-| alert | `<board name>: <label> <percent>%` | port 1; a trigger, filter or scene routed to LoRa, with `(n nodes)` appended when the master merged several boards; each alert line is followed by an IE4 line |
+| alert | `<board name>: <label> <percent>%` | port 1; a trigger, filtered alert, scene or the sound phrase routed to LoRa; ` <level> dB` is appended when the rule's dB is ticked, ` · <lat>,<lon>` when GPS is ticked; each alert line is followed by an IE4 line |
 | IE1 | `IE1 <id> <lat> <lon> <seq>` | position, six decimals; MeshCore framing only, Meshtastic uses port 3 instead |
 | IE2 | `IE2 <id> <mac24> <role> <batt_mv> <uptime_min> <flags> <cfg_hash> <ip> <lat> <lon> <seq>` | heartbeat every 60 s; `mac24` six hex digits, `role` 0 remote 1 master, `flags` bit0 GPS fix, bit1 Wi-Fi, bit2 live GPS, bit3 has LoRa, bit4 presence on; `cfg_hash` and `ip` eight hex digits; `-` for a missing coordinate |
 | IE4 | `IE4 <id> <kind> <conf> <snr> <db> <seq> <name>` | an alert or a scene state for the fleet pages |
