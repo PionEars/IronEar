@@ -22,11 +22,10 @@ Firmware 9.0.0. One WebSocket per client at `ws://<board address>/ws?tok=<token>
 | net | 5 s | `{ip}` |
 | mesh | 5 s | `{backend, tx, rx, drops, house{up, peers, tx, rx}, coex{on, req, grant, denied, wifi_tx_in_grant, max_wait_ms}}` |
 | fleet | when the fleet list changes | `{changed, id}` |
-| node | when a board is heard the first time | `{id, serial, fix, lat, lon, rssi}` |
-| remote | when a remote board's name or scenes change | `{id, serial}` |
+| node | when a position arrives on the mesh | `{id, fix, lat, lon, rssi}` |
+| remote | when a remote board's name, scenes or last alert change | `{id, serial, name, via, seen_s, scenes, last_alert}`, the board's row |
 | location | when this board's position changes | `{lat, lon, mode, by}` |
 | mesh_text | when a text arrives on the LoRa channel | `{proto, from, rssi, text}` |
-| mesh_alert | when an alert arrives over the mesh | `{src, priority, rssi}` |
 | security | sign-in events | `{msg}` |
 
 Levels are dBFS. The pages show them as estimated sound pressure by adding 120 dB.
