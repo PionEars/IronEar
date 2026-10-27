@@ -105,7 +105,7 @@ A label in `triggers` or `password` is a class name from the model's class map, 
 |---|---|---|---|
 | /api/wifi/status | GET | none | `{connected, ip, host, ssid, ap_clients, ap_up, ap_seconds, ap_key_src, offgrid}` |
 | /api/wifi/scan | GET | none | `[{ssid, rssi, auth}]` |
-| /api/wifi/connect | POST | `{"ssid", "pass"}` | `{ok}`; saves the network and connects |
+| /api/wifi/connect | POST | `{"ssid", "password"}` | `{ok}`; saves the network and connects |
 | /api/wifi/forget | POST | `{"confirm":true}` | `{ok, rebooting}`; drops the saved network and restarts as its own access point, settings kept |
 | /api/wifi/offgrid | POST | `{"offgrid"}` | `{ok, offgrid}`; marks the board as used without a home network |
 | /api/wifi/ap | POST | `{"minutes"}` 1 to 480 | `{ok}`; opens the setup access point for that long |
